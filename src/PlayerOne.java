@@ -24,7 +24,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
-public class PlayerOne {
+public class PlayerOne 
+{
 	static boolean run = true;
 	static private JFrame frame;
 	static private JPanel mainPanel;
@@ -38,11 +39,13 @@ public class PlayerOne {
 	static private PrintWriter out;
 	static private Socket socket;
 	
-	public static void main(String[] args){
+	public static void main(String[] args)
+   {
 		buildMenu();
 	}
 	
-	private static void buildMenu(){
+	private static void buildMenu()
+   {
 		frame = new JFrame("Player One"); //change
 		frame.setSize(500, 700);
 		frame.setLocationRelativeTo(null);
@@ -62,9 +65,11 @@ public class PlayerOne {
 		startBtn.setForeground(Color.WHITE);
 		startBtn.setFont(btnFont);
 		startBtn.setFocusPainted(false);
-		startBtn.addActionListener(new ActionListener(){
+		startBtn.addActionListener(new ActionListener()
+      {
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) 
+         {
 				frame.setVisible(false);
 				frame.revalidate();
 				frame.repaint();
@@ -77,7 +82,8 @@ public class PlayerOne {
 					frame.setVisible(true);
 					frame.revalidate();
 					frame.repaint();
-				} catch (IOException | InterruptedException e1) {
+				} catch (IOException | InterruptedException e1) 
+            {
 					e1.printStackTrace();
 				}
 			}
@@ -88,9 +94,11 @@ public class PlayerOne {
         exitBtn.setBackground(new Color(255,90,0));
         exitBtn.setForeground(Color.WHITE);
         exitBtn.setFont(btnFont);
-		exitBtn.addActionListener(new ActionListener(){
+		exitBtn.addActionListener(new ActionListener()
+      {
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) 
+         {
 				System.exit(0);
 			}
 		});
@@ -100,12 +108,16 @@ public class PlayerOne {
 		connectBtn.setBackground(new Color(255,40,0));
 		connectBtn.setForeground(Color.WHITE);
 		connectBtn.setFont(btnFont);
-		connectBtn.addActionListener(new ActionListener(){
+		connectBtn.addActionListener(new ActionListener()
+      {
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				try {
+			public void actionPerformed(ActionEvent e) 
+         {
+				try 
+            {
 					run();
-				} catch (IOException e1) {
+				} catch (IOException e1) 
+            {
 					e1.printStackTrace();
 				}
 			}
@@ -166,21 +178,25 @@ public class PlayerOne {
 		frame.setVisible(true);
 	}
 	
-	private static void run() throws IOException{
+	private static void run() throws IOException
+   {
 		System.out.println("in createSocket");
 		
 		socket = new Socket(IP.getText(), Integer.parseInt(port.getText()));
         in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         out = new PrintWriter(socket.getOutputStream(), true);
         
-        while(run){
+        while(run)
+        {
 	        String line = in.readLine();
-	        if (line.startsWith("GETID")) {
+	        if (line.startsWith("GETID")) 
+           {
 	        	System.out.println("in getid");
 	        	//change
 	            out.println("PLAYERONE"); //change
 	        }
-	        else if(line.startsWith("LOGINSUCCESS")){
+	        else if(line.startsWith("LOGINSUCCESS"))
+           {
 	        	System.out.println("Login was a success");
 	        	run = false;
 	        	startBtn.setEnabled(true);
