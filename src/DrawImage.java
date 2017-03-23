@@ -37,14 +37,14 @@ public class DrawImage extends SwingWorker {
 	    this.frame = frame;
 	}
 	
-	public DrawImage(ClientTwo client, StringBuilder code, int imageId, JLabel myImageLabel, JFrame frame){
+	/*public DrawImage(ClientTwo client, StringBuilder code, int imageId, JLabel myImageLabel, JFrame frame){
 
 		this.clientTwo = client;
 		this.code = code;
 		this.imageId = imageId;
 		this.myImageLabel = myImageLabel;
 		this.frame = frame;
-	}
+	}*/
 
 	@Override
 	protected Object doInBackground() throws Exception {
@@ -57,7 +57,7 @@ public class DrawImage extends SwingWorker {
 		System.out.println("drawImage");
 		
 		if(clientTwo == null){
-			clientOne.myImageLabel.setIcon(new ImageIcon("gui_images/redrawing.png"));
+			clientOne.myImageLabel.setIcon(new ImageIcon("gui_images/redrawing2.png"));
 		}
 		else{
 			clientTwo.myImageLabel.setIcon(new ImageIcon("gui_images/redrawing.png"));
